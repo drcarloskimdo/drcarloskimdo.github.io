@@ -201,6 +201,8 @@ footer { color: var(--muted); font-size: 12px; }
 @media (min-width: 961px) { .main .card { width: min(360px, 48%); } }
 @media (max-width: 960px) {
   .main { grid-template-columns: minmax(0, 1fr); }
+  .main .map { order: 1; }
+  .main .hfside { order: 2; }
   .hfmini { height: auto; aspect-ratio: 572 / 770; max-height: 720px; }
 }
 @media (max-width: 720px) {
