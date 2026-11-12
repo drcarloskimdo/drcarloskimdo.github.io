@@ -61,6 +61,7 @@ header { display: flex; align-items: flex-end; justify-content: space-between; g
 .brand p { margin: 8px 0 0; color: var(--muted); max-width: 56ch; }
 .brand .tagline { margin-top: 6px; color: var(--ink); font: 600 clamp(16px, 2.2vw, 20px)/1.3 var(--font-body); }
 .brand .tagline .via { color: var(--accent); }
+.brand .fresh { margin-top: 4px; font-size: 13px; color: var(--ink); opacity: .8; }
 .brand h1 .couch { font-style: normal; font-size: .7em; vertical-align: .08em; }
 button, .btn {
   font: 600 14px/1 var(--font-body); border-radius: 6px; padding: 11px 16px; cursor: pointer;
@@ -319,6 +320,34 @@ footer { color: var(--muted); font-size: 12px; }
 }
 /* ---------- Hyperfocus: South Korea ---------- */
 .kr { background: var(--hf-sea); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; }
+
+:root { --sf-sea1: #d7ebf5; --sf-sea2: #a9cfe6; --sf-land1: #fbf8ee; --sf-land2: #ecf1dd; --sf-hill: #8fae6e; --sf-shallow: #e8f5fb; --sf-coast: #9db8c8; --sf-tree: #8cc47f; --sf-pk1: #c4cfa6; --sf-pk2: #93a777; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --sf-sea1: #0e2133; --sf-sea2: #07131f; --sf-land1: #26384f; --sf-land2: #1d3141; --sf-hill: #4f7a55; --sf-shallow: #183049; --sf-coast: #3a5670; --sf-tree: #2f6b4a; --sf-pk1: #3d5a47; --sf-pk2: #2b4535; } }
+:root[data-theme="dark"] { --sf-sea1: #0e2133; --sf-sea2: #07131f; --sf-land1: #26384f; --sf-land2: #1d3141; --sf-hill: #4f7a55; --sf-shallow: #183049; --sf-coast: #3a5670; --sf-tree: #2f6b4a; --sf-pk1: #3d5a47; --sf-pk2: #2b4535; }
+.kr .kr-mapbox .hf-sea { fill: url(#sfSea); }
+.kr .kr-mapbox .hf-island { fill: url(#sfLand); stroke: var(--sf-coast); stroke-width: 1; }
+.sf-shallow { fill: none; stroke: var(--sf-shallow); stroke-width: 14; stroke-linejoin: round; opacity: .5; }
+.sf-shallow2 { fill: none; stroke: var(--sf-shallow); stroke-width: 6; stroke-linejoin: round; opacity: .85; }
+.sf-grat path { fill: none; stroke: var(--hf-water); stroke-width: .6; stroke-dasharray: 2 4; opacity: .45; }
+.sf-grat text { font: 500 7.5px var(--font-mono); fill: var(--hf-water); opacity: .8; }
+.sf-hills ellipse { fill: url(#sfHill); }
+.sf-wm { font: 800 46px var(--font-display); fill: var(--hf-water); opacity: .16; letter-spacing: .08em; }
+.sf-pk-l { fill: var(--sf-pk1); } .sf-pk-r { fill: var(--sf-pk2); }
+.sf-cdot { fill: #fff; stroke: var(--hf-lm); stroke-width: 1.2; }
+.sf-ctext { font: italic 500 8.5px var(--font-body); fill: var(--hf-lm); paint-order: stroke; stroke: var(--sf-land1); stroke-width: 2.5px; }
+.sf-ferry { fill: none; stroke: var(--hf-water); stroke-width: 1.4; stroke-dasharray: 4 3; }
+.sf-boat { font: italic 600 9px var(--font-body); fill: var(--hf-lm); }
+.kr-ktx-g { fill: none; stroke: rgba(255,255,255,.75); stroke-width: 11; stroke-linecap: round; stroke-linejoin: round; }
+.kr-seoulbox .hf-park { fill: url(#sfTrees); }
+.sf-wards rect { opacity: .55; }
+.sf-wards text { font: 700 9px var(--font-mono); letter-spacing: .22em; fill: var(--hf-lm); opacity: .45; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sf-wards rect { opacity: .1; } :root:not([data-theme="light"]) .kr-ktx-g { stroke: rgba(10,22,34,.7); } }
+:root[data-theme="dark"] .sf-wards rect { opacity: .1; } :root[data-theme="dark"] .kr-ktx-g { stroke: rgba(10,22,34,.7); }
+.jp-okibox rect { fill: rgba(255,255,255,.18); stroke: var(--hf-lm); stroke-width: 1; stroke-dasharray: 4 3; opacity: .7; }
+.jp-moat { fill: none; stroke: var(--hf-pond); stroke-width: 3; }
+.jp-sumida { fill: none; stroke: var(--hf-sea); stroke-width: 16; stroke-linecap: round; }
+.jp-ttower { fill: none; stroke: #e0452b; stroke-width: 2.4; stroke-linejoin: round; }
+.jp-fuji { fill: #7d93ad; }
 .kr.flash, .kr-seoulbox.flash { animation: hfflash 1.2s ease-out; }
 .kr-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 12px 14px 10px; background: var(--hf-panel); border-bottom: 1px solid var(--line); }
 .kr-head .hf-eyebrow { font: 600 10.5px var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
@@ -337,7 +366,7 @@ footer { color: var(--muted); font-size: 12px; }
   background: var(--hf-panel); padding: 6px 9px; border-radius: 6px; border: 1px solid var(--line); }
 .kr-sub small { display: block; font: 500 10px var(--font-mono); letter-spacing: .1em; color: var(--muted); margin-top: 3px; }
 .kr svg { display: block; width: 100%; height: auto; }
-#krMap { aspect-ratio: 495 / 675; } #krSeoul { aspect-ratio: 620 / 470; }
+#krMap { aspect-ratio: 495 / 675; } #krSeoul, #jpTokyo { aspect-ratio: 620 / 470; } #jpMap { aspect-ratio: 1 / 1; }
 .krslot { padding: 12px; background: var(--surface); display: grid; align-content: start; min-width: 0; }
 .krslot .card { position: static; width: auto; max-height: none; box-shadow: none; z-index: auto; }
 .krph { display: grid; place-items: center; text-align: center; gap: 8px; padding: 30px 14px; color: var(--muted); font-size: 13px; border: 1px dashed var(--line); border-radius: 10px; min-height: 220px; }
@@ -384,6 +413,7 @@ footer { color: var(--muted); font-size: 12px; }
       <h1>Sofa <span>Trip</span> <i class="couch" aria-hidden="true">🛋️</i></h1>
       <p class="tagline">Walk the world. Eat the world. Never leave the couch. <span class="via">Via YouTube.</span></p>
       <p>Spin the globe and watch hand-picked <b>YouTube</b> walking tours and street-food tours, filmed by the people who were there. <span id="count"></span> Plus a walk on the Moon and a rover ride on Mars.</p>
+      <p class="fresh">🔄 We update the video list periodically, so there's always somewhere new to go.</p>
     </div>
     <div class="actions">
       <form class="find" id="findForm" role="search">
@@ -399,6 +429,16 @@ footer { color: var(--muted); font-size: 12px; }
 
   <nav class="regions" id="regions" aria-label="Regions"></nav>
 
+  <svg class="sfdefs" aria-hidden="true" width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="sfSea" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--sf-sea1)"/><stop offset="1" style="stop-color:var(--sf-sea2)"/></linearGradient>
+      <linearGradient id="sfLand" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" style="stop-color:var(--sf-land1)"/><stop offset="1" style="stop-color:var(--sf-land2)"/></linearGradient>
+      <radialGradient id="sfHill"><stop offset="0" style="stop-color:var(--sf-hill);stop-opacity:.55"/><stop offset="1" style="stop-color:var(--sf-hill);stop-opacity:0"/></radialGradient>
+      <pattern id="sfTrees" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" style="fill:var(--hf-park)"/><circle cx="2.5" cy="2.5" r="1.6" style="fill:var(--sf-tree)"/><circle cx="7" cy="6.5" r="1.4" style="fill:var(--sf-tree)"/></pattern>
+      <pattern id="sfWaves" width="26" height="14" patternUnits="userSpaceOnUse"><path d="M0,7 q3.25,-3 6.5,0 t6.5,0" class="hf-wave"/></pattern>
+      <filter id="sfShadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#0b2233" flood-opacity=".25"/></filter>
+    </defs>
+  </svg>
   <div class="main" id="main">
   <aside class="hfside" id="hfSide" aria-label="Hyperfocus: New York">
     <div class="hfside-head">
@@ -453,6 +493,27 @@ footer { color: var(--muted); font-size: 12px; }
       </div>
     </div>
     <div class="kr-foot"><span id="krStatus"></span></div>
+  </section>
+
+  <section class="kr jp" id="jpPanel" aria-label="Hyperfocus: Japan">
+    <div class="kr-head">
+      <div>
+        <div class="hf-eyebrow">🇯🇵 Hyperfocus</div>
+        <h2>Japan</h2>
+        <p id="jpCount"></p>
+      </div>
+      <div class="hf-lines" id="jpLines" role="group" aria-label="Highlight a line"></div>
+      <button type="button" class="primary" id="jpRandom">🎲 Random stop</button>
+    </div>
+    <div class="kr-body">
+      <div class="kr-mapbox"><svg id="jpMap" viewBox="0 0 440 440" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Shinkansen map of Japan"></svg></div>
+      <div class="kr-seoulbox" id="jpTokyoBox"><div class="kr-sub">Tokyo · 東京<small>METRO MAP</small></div>
+        <svg id="jpTokyo" viewBox="0 0 620 470" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Tokyo metro map of neighborhood walks"></svg></div>
+      <div class="krslot" id="jpSlot">
+        <div class="krph" id="jpPh"><div><div class="flag">🚅</div><b>Pick a stop</b>Ride the Shinkansen to Kyoto, Osaka or Hiroshima,<br>or the Yamanote loop to Shibuya, Shinjuku or Ueno.</div></div>
+      </div>
+    </div>
+    <div class="kr-foot"><span id="jpStatus"></span></div>
   </section>
 
   <div class="tipwrap" id="tipModal" hidden>
@@ -862,12 +923,14 @@ function renderRegions() {
     `<button type="button" class="moonchip" data-moon="1" aria-pressed="${current === MOON}">🌙 The Moon <span class="n">${MOON.videos.length}</span></button>` +
     `<button type="button" class="marschip" data-mars="1" aria-pressed="${current === MARS}">🔴 Mars <span class="n">${MARS.videos.length}</span></button>` +
     `<button type="button" class="hfchip" data-hfchip="1" aria-pressed="${!!(current && current.hf)}">🗽 Hyperfocus: NYC <span class="n">${HF_STOPS.length}</span></button>` +
-    `<button type="button" class="hfchip" data-krchip="1" aria-pressed="${!!(current && current.kr)}">🇰🇷 Hyperfocus: Korea <span class="n">${KR_STOPS.length}</span></button>`;
+    `<button type="button" class="hfchip" data-krchip="1" aria-pressed="${!!(current && current.kr)}">🇰🇷 Hyperfocus: Korea <span class="n">${KR_STOPS.length}</span></button>` +
+    `<button type="button" class="hfchip" data-jpchip="1" aria-pressed="${!!(current && current.jp)}">🇯🇵 Hyperfocus: Japan <span class="n">${JP_STOPS.length}</span></button>`;
 }
 $("regions").addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   if (b.dataset.hfchip) { hfOpen(); return; }
   if (b.dataset.krchip) { krOpen(); return; }
+  if (b.dataset.jpchip) { jpOpen(); return; }
   if (b.dataset.moon) { go(MOON); return; }
   if (b.dataset.mars) { go(MARS); return; }
   if (b.dataset.food) { foodOnly = !foodOnly; if (foodOnly && current && FOOD[current.slug]) { tab = "food"; activeVideo = 0; renderCard(); } renderRegions(); drawMap(); return; }
@@ -906,7 +969,8 @@ function renderCard() {
     ? `<div class="more"><a href="${ytSearch(d.city + " street food tour")}" target="_blank" rel="noopener">More food videos from ${esc(d.city)} ↗</a></div>`
     : `<div class="more"><a href="${ytSearch(d.more || d.city + " 4K walking tour")}" target="_blank" rel="noopener">${d.moreLabel ? esc(d.moreLabel) : "More walks in " + esc(d.city)} ↗</a></div>`) +
     (d.slug === "newyork" ? `<button type="button" class="hfcta" data-hfopen="1">🗽 Walk NYC stop by stop on the subway map ←</button>` : "") +
-    (d.slug === "seoul" ? `<button type="button" class="hfcta" data-kropen="1">🇰🇷 Walk Seoul and all of Korea on the metro map ↓</button>` : "");
+    (d.slug === "seoul" ? `<button type="button" class="hfcta" data-kropen="1">🇰🇷 Walk Seoul and all of Korea on the metro map ↓</button>` : "") +
+    (d.slug === "tokyo" || d.slug === "kyoto" ? `<button type="button" class="hfcta" data-jpopen="1">🇯🇵 Walk Tokyo and all of Japan on the Shinkansen map ↓</button>` : "");
 }
 $("tabs").addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b || b.dataset.tab === tab) return;
@@ -926,7 +990,7 @@ function go(d, fromHash) {
   if (!d || d === current) return;
   previous = current; current = d; activeVideo = 0; tab = foodOnly && FOOD[d.slug] ? "food" : "walks";
   cardHome($("mapSection"));
-  arcFrom = previous && previous.hf ? DEST.find(x => x.slug === "newyork") : previous && previous.kr ? DEST.find(x => x.slug === "seoul") : previous; arcTo = d;
+  arcFrom = previous && previous.hf ? DEST.find(x => x.slug === "newyork") : previous && previous.kr ? DEST.find(x => x.slug === "seoul") : previous && previous.jp ? DEST.find(x => x.slug === "tokyo") : previous; arcTo = d;
   if (isSpace(d) && !previous) arcFrom = KSC; // no starting point: launch from Florida
   arcT = (arcFrom && !reduce) ? 0 : 1;
   if (!isSpace(d) && !inRegion(d)) region = "all";
@@ -945,7 +1009,7 @@ function go(d, fromHash) {
     target.lon = d.lon; target.lat = clamp(d.lat, -70, 70);
     if (isSpace(previous)) target.zoom = Math.max(target.zoom, 1);
   }
-  renderRegions(); drawMap(); hfPaint(); hfStatus(null); krPaint(); krStatus(null);
+  renderRegions(); drawMap(); hfPaint(); hfStatus(null); krPaint(); krStatus(null); jpPaint(); jpStatus(null);
   if (innerWidth <= 720 && !fromHash) $("card").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
   if (!fromHash) { try { history.replaceState(null, "", "#" + d.slug); } catch (e) { location.hash = d.slug; } }
 }
@@ -1350,7 +1414,7 @@ function drawMap(hq = !moving) {
     const [x, y, z] = screenOf(d.v3);
     if (z < .06 || x < -30 || x > W + 30 || y < -30 || y > H + 30) return;
     pinPos.push([d, x, y]);
-    const on = d === current || (d.slug === "newyork" && !!current && !!current.hf) || (d.slug === "seoul" && !!current && !!current.kr), hov = d === hover, dim = !inRegion(d), edge = Math.min(1, (z - .06) / .2);
+    const on = d === current || (d.slug === "newyork" && !!current && !!current.hf) || (d.slug === "seoul" && !!current && !!current.kr) || (d.slug === "tokyo" && !!current && !!current.jp), hov = d === hover, dim = !inRegion(d), edge = Math.min(1, (z - .06) / .2);
     badges.push([d, x, y - (on ? 6.5 : small ? 4 : 5) - 10, (dim ? .45 : 1) * edge]);
     ctx.globalAlpha = (dim ? .45 : 1) * edge;
     if (on) { ctx.fillStyle = acc; ctx.globalAlpha = .3 * edge; ctx.beginPath(); ctx.arc(x, y, 15, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = edge; }
@@ -1820,7 +1884,7 @@ function hfGo(d, fromHash) {
   if (d !== current) {
     previous = current; current = d; activeVideo = 0; tab = "walks"; arcFrom = arcTo = null; inertia = null;
     target.lon = -74; target.lat = 40.7; target.zoom = Math.max(target.zoom, 1.25);
-    cardHome($("mapSection")); renderCard(); renderRegions(); drawMap(); krPaint(); krStatus(null);
+    cardHome($("mapSection")); renderCard(); renderRegions(); drawMap(); krPaint(); krStatus(null); jpPaint(); jpStatus(null);
   }
   hfPaint(); hfStatus(d);
   if (innerWidth <= 960 && !fromHash) $("card").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
@@ -1854,6 +1918,50 @@ $("hfRandom").addEventListener("click", () => {
 $("cClose").addEventListener("click", () => { hfPaint(); hfStatus(null); });
 $("card").addEventListener("click", (e) => { if (e.target.closest("[data-hfopen]")) hfOpen(); });
 hfBuild(); hfStatus(null);
+
+/* ---------- Map finish: coasts, terrain, graticule, cities (shared by the Korea & Japan panels) ---------- */
+function sfPeak(x, y, s = 1, snow) {
+  const f = (n) => n.toFixed(1);
+  return `<g class="sf-peak"><path class="sf-pk-l" d="M${f(x - 12 * s)},${f(y + 6 * s)}L${f(x - 4 * s)},${f(y - 5 * s)}L${f(x - 1 * s)},${f(y - 1 * s)}L${f(x + 3 * s)},${f(y - 11 * s)}L${f(x + 3 * s)},${f(y + 6 * s)}Z"/>` +
+    `<path class="sf-pk-r" d="M${f(x + 3 * s)},${f(y - 11 * s)}L${f(x + 12 * s)},${f(y + 6 * s)}L${f(x + 3 * s)},${f(y + 6 * s)}Z"/>` +
+    (snow ? `<path class="kr-snow" d="M${f(x - .6 * s)},${f(y - 6.2 * s)}L${f(x + 3 * s)},${f(y - 11 * s)}L${f(x + 6.2 * s)},${f(y - 5.6 * s)}L${f(x + 4.3 * s)},${f(y - 6.6 * s)}L${f(x + 2.6 * s)},${f(y - 5 * s)}L${f(x + 1 * s)},${f(y - 6.6 * s)}Z"/>` : "") + `</g>`;
+}
+function sfDecorate(svg, c) {
+  const mk = (cls, html) => { const g = document.createElementNS(SVGNS, "g"); if (cls) g.setAttribute("class", cls); g.innerHTML = html; return g; };
+  const landG = svg.querySelector(".sf-landg"); if (!landG) return;
+  const isl = [...landG.querySelectorAll("path.hf-island")], all = [...landG.querySelectorAll("path")];
+  const vb = svg.viewBox.baseVal, [x0, y0, x1, y1] = [vb.x, vb.y, vb.x + vb.width, vb.y + vb.height];
+  // faint latitude / longitude lines with degree labels
+  let gr = "", gl = "";
+  c.grat.lon.forEach(lo => { const x = c.xy(lo, 0)[0]; gr += `M${x.toFixed(1)},${y0 - 20}L${x.toFixed(1)},${y1 + 20}`; gl += `<text x="${(x + 3).toFixed(1)}" y="${(y1 - 5).toFixed(1)}">${lo}°E</text>`; });
+  c.grat.lat.forEach(la => { const y = c.xy(0, la)[1]; gr += `M${x0 - 20},${y.toFixed(1)}L${x1 + 20},${y.toFixed(1)}`; gl += `<text x="${(x1 - 4).toFixed(1)}" y="${(y - 3).toFixed(1)}" text-anchor="end">${la}°N</text>`; });
+  svg.insertBefore(mk("sf-grat", `<path d="${gr}"/>${gl}`), landG);
+  // shallow-water rings hugging every coast
+  svg.insertBefore(mk("sf-coast", all.map(p => `<path class="sf-shallow" d="${p.getAttribute("d")}"/>`).join("") + all.map(p => `<path class="sf-shallow2" d="${p.getAttribute("d")}"/>`).join("")), landG);
+  // soft terrain shading, clipped to the land
+  const cid = svg.id + "Clip";
+  const after = landG.nextSibling;
+  svg.insertBefore(mk("", `<clipPath id="${cid}">${isl.map(p => `<path d="${p.getAttribute("d")}"/>`).join("")}</clipPath>`), after);
+  svg.insertBefore(mk("sf-hills", c.hills.map(([lo, la, r]) => { const [x, y] = c.xy(lo, la); return `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${r}" ry="${(r * .7).toFixed(1)}"/>`; }).join("")), after).setAttribute("clip-path", `url(#${cid})`);
+  const [wx, wy] = c.wmAt;
+  svg.insertBefore(mk("", `<text class="sf-wm" x="${wx}" y="${wy}" text-anchor="middle">${c.wm}</text>`), after);
+  // smaller cities and a ferry, under the rail lines
+  const lines = svg.querySelector(".hf-linegrp");
+  const city = ([n, lo, la, side]) => { const [x, y] = c.xy(lo, la);
+    const [tx, ty, a] = side === "l" ? [x - 5, y + 3, "end"] : side === "t" ? [x, y - 6, "middle"] : side === "b" ? [x, y + 11, "middle"] : [x + 5, y + 3, "start"];
+    return `<circle class="sf-cdot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/><text class="sf-ctext" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${a}">${n}</text>`; };
+  let extra = c.cities.map(city).join("");
+  if (c.ferry) { const { from: [fx, fy], to: [tx, ty], label, at: [lx, ly] } = c.ferry;
+    extra += `<path class="sf-ferry" d="M${fx.toFixed(1)},${fy.toFixed(1)}Q${((fx + tx) / 2 + 18).toFixed(1)},${((fy + ty) / 2 + 18).toFixed(1)} ${tx},${ty}"/><text class="sf-boat" x="${lx}" y="${ly}">${label}</text>`; }
+  svg.insertBefore(mk("sf-cities", extra), lines);
+}
+// City insets: pastel districts with faint names
+function sfCity(svg, wards) {
+  const base = svg.querySelector("rect.hf-island");
+  const g = document.createElementNS(SVGNS, "g"); g.setAttribute("class", "sf-wards");
+  g.innerHTML = wards.map(([n, x, y, w, h, c]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="26" style="fill:${c}"/><text x="${x + w / 2}" y="${y + h - 10}" text-anchor="middle">${n}</text>`).join("");
+  base.after(g);
+}
 
 /* ---------- Hyperfocus: South Korea (KTX map + Seoul metro inset) ---------- */
 // Country map: simple equirectangular, stretched north–south for this latitude
@@ -1982,7 +2090,7 @@ function krLinesSvg(map) {
         <text class="kr-note" x="${(px - 6).toFixed(1)}" y="${(py + 26).toFixed(1)}" text-anchor="middle">1 hr flight</text></g>`;
     }
     const d = l.loop ? hfSmooth(pts) : krD(pts);
-    if (l.style === "ktx") return `<g class="kr-line" data-line="${l.id}"><path class="kr-ktx" d="${d}" stroke="${l.color}"/><path class="kr-ktx-i" d="${d}"/></g>`;
+    if (l.style === "ktx") return `<g class="kr-line" data-line="${l.id}"><path class="kr-ktx-g" d="${d}"/><path class="kr-ktx" d="${d}" stroke="${l.color}"/><path class="kr-ktx-i" d="${d}"/></g>`;
     if (l.style === "dash") return `<g class="kr-line" data-line="${l.id}"><path class="kr-bus" d="${d}" stroke="${l.color}"/></g>`;
     return `<g class="kr-line" data-line="${l.id}"><path class="hf-line" d="${d}" stroke="${l.color}"/></g>`;
   }).join("");
@@ -1996,8 +2104,7 @@ function krBuild() {
   const tsushima = P([[129.3,34.35],[129.42,34.6],[129.48,34.7],[129.36,34.55]]);
   const jejuIsl = []; for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2; jejuIsl.push(krXY(126.55 + .45 * Math.cos(a), 33.37 + .2 * Math.sin(a))); }
   const ganghwa = P([[126.38,37.62],[126.5,37.66],[126.5,37.77],[126.38,37.76]]);
-  const mtn = (lon, lat, s = 1, snow) => { const [x, y] = krXY(lon, lat);
-    return `<path class="kr-mtn" d="M${x - 9 * s},${y + 5 * s}L${x},${y - 9 * s}L${x + 9 * s},${y + 5 * s}Z"/>` + (snow ? `<path class="kr-snow" d="M${x - 3 * s},${y - 3 * s}L${x},${y - 9 * s}L${x + 3 * s},${y - 3 * s}Z"/>` : ""); };
+  const mtn = (lon, lat, s = 1, snow) => sfPeak(...krXY(lon, lat), s, snow);
   const mtns = [[128.46,38.12,1.1,1],[128.62,37.75,.9],[128.75,37.4,.8],[128.85,37.05,.8],[128.7,36.7,.8],[128.55,36.95,.7],[128.1,36.75,.7],[127.73,35.33,1,1],[127.95,35.6,.7],[126.53,33.36,1.2,1],[128.25,37.25,.7]].map(m => mtn(...m)).join("");
   const [hx, hy] = krXY(KR_HUBS.hub.lon, KR_HUBS.hub.lat);
   const sea = (t, lon, lat, rot = 0) => { const [x, y] = krXY(lon, lat); return `<text class="hf-water" transform="translate(${x.toFixed(0)},${y.toFixed(0)}) rotate(${rot})" text-anchor="middle">${t}</text>`; };
@@ -2007,8 +2114,8 @@ function krBuild() {
   $("krMap").innerHTML = `
     <defs><pattern id="krWaves" width="26" height="14" patternUnits="userSpaceOnUse"><path d="M0,7 q3.25,-3 6.5,0 t6.5,0" class="hf-wave"/></pattern>
       <filter id="krShadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0b2233" flood-opacity=".22"/></filter></defs>
-    <rect class="hf-sea" x="-50" y="-50" width="700" height="850"/><rect x="-50" y="-50" width="700" height="850" fill="url(#krWaves)"/>
-    <g filter="url(#krShadow)">
+    <rect class="hf-sea" x="-50" y="-50" width="700" height="850"/><rect x="-50" y="-50" width="700" height="850" fill="url(#sfWaves)"/>
+    <g class="sf-landg" filter="url(#sfShadow)">
       <path class="hf-land" d="${hfSmooth(nk)}"/><path class="hf-land" d="${hfSmooth(jp)}"/><path class="hf-land" d="${hfSmooth(tsushima)}"/>
       <path class="hf-island" d="${hfSmooth(coast)}"/><path class="hf-island" d="${hfSmooth(jejuIsl)}"/><path class="hf-island" d="${hfSmooth(ganghwa)}"/>
     </g>
@@ -2025,6 +2132,11 @@ function krBuild() {
     <g class="hf-stops">${krStopsSvg("kr")}</g>
     <g class="hf-compass" transform="translate(${cxC},${cyC})"><circle r="17"/><path class="hf-cn" d="M0,-15l4,15h-8z"/><path class="hf-cs" d="M0,15l4,-15h-8z"/><text y="-20" text-anchor="middle">N</text></g>`;
 
+  sfDecorate($("krMap"), { xy: krXY, wm: "대한민국", wmAt: [168, 586],
+    grat: { lon: [125, 126, 127, 128, 129, 130], lat: [34, 35, 36, 37, 38] },
+    hills: [[128.6,37.4,55],[128.9,36.7,45],[128.2,36.5,40],[127.7,35.4,40],[128.4,35.8,30],[126.53,33.37,22],[127.4,37.9,30]],
+    cities: [["Daejeon",127.38,36.35,"r"],["Gwangju",126.85,35.16,"l"],["Ulsan",129.31,35.54,"r"],["Pohang",129.37,36.02,"r"],["Mokpo",126.39,34.81,"l"],["Chuncheon",127.73,37.88,"t"],["Andong",128.73,36.57,"r"],["Cheongju",127.49,36.64,"r"],["Changwon",128.68,35.23,"b"]],
+    ferry: { from: krXY(129.07, 35.16), to: [548, 590], label: "⛴ to Fukuoka", at: [462, 596] } });
   // ---- Seoul inset ----
   const riv = [[0,318],[90,312],[160,300],[240,292],[320,288],[400,282],[470,272],[540,280],[620,268]];
   const bankN = riv.map(([x, y]) => [x, y - 20]), bankS = riv.slice().reverse().map(([x, y]) => [x, y + 20]);
@@ -2051,6 +2163,8 @@ function krBuild() {
     <g class="kr-hubg kr-sstn"><circle class="kr-hubdot" cx="${sx}" cy="${sy}" r="9"/>
       <text class="hf-lbl" x="${sx - 12}" y="${sy - 9}" text-anchor="end">Seoul Stn</text><text class="hf-boro" x="${sx - 12}" y="${sy + 3}" text-anchor="end">KTX</text></g>
     <g class="hf-stops">${krStopsSvg("seoul")}</g>`;
+  sfCity($("krSeoul"), [["JONGNO", 180, 30, 190, 110, "#f6d9e3"], ["DONGDAEMUN", 380, 40, 240, 120, "#d7ecf2"], ["MAPO", 40, 150, 160, 120, "#e4ddf3"], ["JUNG", 225, 160, 150, 70, "#fbefc7"],
+    ["SEONGDONG", 400, 175, 160, 80, "#f4f0c8"], ["YONGSAN", 210, 235, 170, 30, "#fde3cf"], ["YEONGDEUNGPO", 0, 330, 200, 140, "#f8dcdc"], ["GANGNAM", 290, 330, 180, 140, "#d8f0de"], ["SONGPA", 480, 310, 140, 160, "#d9e6fb"]]);
 
   const short = { gyeongbu:"Busan", honam:"Jeonju · Yeosu", gangneung:"Gangneung", air:"Jeju" };
   const chip = (l) => `<button type="button" class="hf-lchip kr-lchip" data-l="${l.id}" aria-pressed="false" title="${esc(l.name)}">
@@ -2078,7 +2192,7 @@ document.fonts?.ready.then(krPlaceBadges);
 // The one video card moves to whichever panel you're using
 function cardHome(el) { const c = $("card"); if (c.parentNode !== el) el.appendChild(c); }
 function krPaint() {
-  document.querySelectorAll(".kr-stop").forEach(g => {
+  document.querySelectorAll("[data-kr]").forEach(g => {
     const d = KR_BY[g.dataset.kr];
     g.classList.toggle("on", current === d);
     g.classList.toggle("dim", !!krFocus && !d.lines.some(l => l.id === krFocus));
@@ -2095,7 +2209,7 @@ function krGo(d, fromHash) {
   if (d !== current) {
     previous = current; current = d; activeVideo = 0; tab = "walks"; arcFrom = arcTo = null; inertia = null;
     target.lon = 127.8; target.lat = 36.3; target.zoom = Math.max(target.zoom, 1.25);
-    cardHome($("krSlot")); renderCard(); renderRegions(); drawMap(); hfPaint(); hfStatus(null);
+    cardHome($("krSlot")); renderCard(); renderRegions(); drawMap(); hfPaint(); hfStatus(null); jpPaint(); jpStatus(null);
   }
   krPaint(); krStatus(d);
   if (innerWidth <= 960 && !fromHash) $("card").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
@@ -2131,6 +2245,274 @@ $("cClose").addEventListener("click", () => { krPaint(); krStatus(null); });
 $("card").addEventListener("click", (e) => { if (e.target.closest("[data-kropen]")) krOpen(); });
 krBuild(); krStatus(null); krPaint();
 
+/* ---------- Hyperfocus: Japan (Shinkansen map + Tokyo metro inset) ---------- */
+const jpXY = (lon, lat) => [(lon - 129.4) * 34, (41.6 - lat) * 41];
+// Hokkaido sits in its own box in the top-left corner
+const hkXY = (lon, lat) => [10 + (lon - 139.7) * 23.5, 14 + (45.6 - lat) * 25.5];
+const jv = (id, title) => ({ id, title });
+
+const JP_LINES = [
+  { id:"tokaido", map:"jp", style:"ktx", color:"#1561AE", ink:"#fff", bullet:"新", name:"Tokaido & Sanyo Shinkansen · Tokyo–Osaka–Fukuoka",
+    route:["hub","yokohama",[138.38,34.97],[136.88,35.17],"kyoto","osaka",[135.2,34.7],[133.92,34.67],"hiroshima",[130.88,33.88],"fukuoka"] },
+  { id:"tohoku", map:"jp", style:"ktx", color:"#2E9E4A", ink:"#fff", bullet:"新", name:"Tohoku & Hokkaido Shinkansen · to Hakodate",
+    route:["hub",[139.9,36.4],[140.88,38.27],[141.15,39.7],[140.73,40.83]] },
+  { id:"hokuriku", map:"jp", style:"ktx", color:"#B8722C", ink:"#fff", bullet:"新", name:"Hokuriku Shinkansen · to Kanazawa",
+    route:["hub",[139.0,36.32],[138.19,36.64],[137.21,36.7],"kanazawa"] },
+  { id:"hokkaido", map:"jp", style:"dash", color:"#2E9E4A", ink:"#fff", bullet:"🚆", name:"Limited express · Hakodate to Sapporo",
+    route:[{ raw:hkXY(140.73,41.77) },{ raw:hkXY(140.7,42.4) },"sapporo"] },
+  { id:"fujibus", map:"jp", style:"dash", color:"#7a8394", ink:"#fff", bullet:"🚌", name:"Highway bus · to Mt Fuji",
+    route:["hub",[139.1,35.55],"fuji"] },
+  { id:"kintetsu", map:"jp", style:"metro", color:"#D7262E", ink:"#fff", bullet:"近", name:"Kintetsu · Kyoto to Nara",
+    route:["kyoto","nara"] },
+  { id:"air", map:"jp", style:"air", color:"#d9771c", ink:"#fff", bullet:"✈", name:"Flight · Haneda to Okinawa",
+    route:["hub","okinawa"] },
+  // Tokyo, inset pixels
+  { id:"jy", map:"tokyo", style:"metro", loop:true, color:"#80C241", ink:"#111", bullet:"JY", name:"Yamanote Line · the loop",
+    route:["tstn","akihabara","ueno",[350,92],[280,84],"ikebukuro",[172,160],"shinjuku","harajuku","shibuya",[235,372],[300,405],[355,345],[385,300]] },
+  { id:"g", map:"tokyo", style:"metro", color:"#F39700", ink:"#fff", bullet:"G", name:"Ginza Line",
+    route:["shibuya",[215,285],[280,268],"ginza",[392,228],[410,190],[412,140],"asakusa"] },
+  { id:"m", map:"tokyo", style:"metro", color:"#E60012", ink:"#fff", bullet:"M", name:"Marunouchi Line",
+    route:["ikebukuro",[300,165],[365,212],"tstn","ginza",[290,252],[230,222],"shinjuku",[60,205],[0,212]] },
+  { id:"u", map:"tokyo", style:"metro", color:"#1E88C8", ink:"#fff", bullet:"U", name:"Yurikamome · to Odaiba",
+    route:[[355,345],[420,372],"odaiba",[540,440]] },
+  { id:"in", map:"tokyo", style:"metro", color:"#C2185B", ink:"#fff", bullet:"IN", name:"Keio Inokashira Line",
+    route:["shibuya","shimokita",[0,350]] },
+];
+
+const JP_STOPS = [
+  { slug:"sapporo", map:"jp", name:"Sapporo", x:hkXY(141.35,43.06)[0], y:hkXY(141.35,43.06)[1], side:"r", blurb:"Susukino's neon, ramen alley and snowy Odori Park.",
+    videos:[jv("TuSrD8N3Q20","Susukino and Odori Park"), jv("MAc5YIHMq9s","Odori Park to Susukino in record snow"), jv("xFPEt9omvrU","Susukino and Tanukikoji")] },
+  { slug:"kanazawa", map:"jp", name:"Kanazawa", lon:136.65, lat:36.57, side:"l", blurb:"Geisha teahouses, gold leaf and Omicho Market.",
+    videos:[jv("OM5BM8BbGsA","Higashi Chaya District"), jv("o4oxCepww08","From the station to Omicho and Higashi Chaya")] },
+  { slug:"fuji", map:"jp", name:"Mt Fuji", sub:"Kawaguchiko", lon:138.7, lat:35.66, side:"l", nature:true, blurb:"Lake Kawaguchi, with the mountain right across the water.",
+    videos:[jv("DzaIVJWiXoY","Oishi Park on Lake Kawaguchi"), jv("arQqTOBti0w","Kawaguchiko station down to the lake"), jv("KMmQrq52YhY","The Panoramic Ropeway and the lake")] },
+  { slug:"yokohama", map:"jp", name:"Yokohama", lon:139.6, lat:35.12, side:"r", blurb:"Minato Mirai's waterfront, the Red Brick Warehouse and Chinatown.",
+    videos:[jv("OB-x-xeb1kI","Minato Mirai and the Red Brick Warehouse"), jv("ZjuaHfJNjq0","Yokohama at night")] },
+  { slug:"kyoto", map:"jp", name:"Kyoto", lon:135.85, lat:35.25, side:"l", blurb:"Gion's lantern-lit lanes and 10,000 torii gates.",
+    videos:[jv("fcgdGz4tMGA","Gion District at dusk"), jv("PlFWZxoHhts","Historic streets of Kyoto"), jv("_mR6tdAzX-o","Fushimi Inari's torii gates")] },
+  { slug:"nara", map:"jp", name:"Nara", lon:136.1, lat:34.55, side:"r", blurb:"Bowing deer and the giant Buddha of Todai-ji.",
+    videos:[jv("n5U3T8RQrfI","Nara Deer Park and Todai-ji"), jv("YhypWb4OT3s","The deer park everyone visits")] },
+  { slug:"osaka", map:"jp", name:"Osaka", sub:"Dotonbori", lon:135.4, lat:34.6, side:"b", blurb:"The Glico runner, takoyaki and canal-side neon.",
+    videos:[jv("NRAlY5bUR-w","Dotonbori at night"), jv("uqfaMWGeXaM","Shinsekai to Namba and Dotonbori"), jv("ckh2ARtcHcM","Dotonbori's visual candyland")] },
+  { slug:"hiroshima", map:"jp", name:"Hiroshima", sub:"Miyajima", lon:132.46, lat:34.4, side:"b", blurb:"The floating torii of Itsukushima Shrine.",
+    videos:[jv("7UeY461Ar2U","Ferry terminal to Itsukushima Shrine"), jv("1kOapkWyM9c","A day trip around Miyajima")] },
+  { slug:"fukuoka", map:"jp", name:"Fukuoka", sub:"Nakasu", lon:130.42, lat:33.59, side:"b", blurb:"Riverside yatai stalls and tonkotsu ramen.",
+    videos:[jv("1UafaGezt3A","Nakasu, food stalls and the Naka River"), jv("ZZfhM--rKm0","A night walk in Nakasu")] },
+  { slug:"okinawa", map:"jp", name:"Naha", sub:"Okinawa", x:338, y:410, side:"l", blurb:"Kokusai-dori's shops and the Makishi market.",
+    videos:[jv("pFj7YPe4cKc","Kokusai-dori in early summer"), jv("lMu_hudt1ZE","Kokusai Street on a summer night"), jv("5Cu2u4nzaSw","Kokusai Dori by day")] },
+  // Tokyo
+  { slug:"ikebukuro", map:"tokyo", name:"Ikebukuro", x:195, y:110, side:"l", blurb:"Sunshine City and the anime shops of Otome Road.",
+    videos:[jv("1FhUO5x3C30","Sunshine 60 Street and Animate"), jv("8xVu4FS2cWs","Ikebukuro at night")] },
+  { slug:"shinjuku", map:"tokyo", name:"Shinjuku", x:165, y:215, side:"l", blurb:"Kabukicho's neon, Golden Gai and Omoide Yokocho.",
+    videos:[jv("8Opzw37vuhg","Kabukicho, Omoide Yokocho and Golden Gai"), jv("lZY6mbDw5MU","Office towers to the neon maze"), jv("K1_mxPL3rpw","Back alleys on a rainy night")] },
+  { slug:"harajuku", map:"tokyo", name:"Harajuku", sub:"Omotesando", x:172, y:268, side:"l", blurb:"Takeshita Street crepes and Omotesando boutiques.",
+    videos:[jv("ROYnqMuoCyo","Omotesando and Takeshita Street"), jv("cLpIEwInr-c","Omotesando and Harajuku")] },
+  { slug:"shibuya", map:"tokyo", name:"Shibuya", x:195, y:318, side:"r", blurb:"The world's busiest crossing and Center Gai.",
+    videos:[jv("iA07Qb397r0","The world's busiest crossing"), jv("sXGo3-dskUY","39 minutes around Shibuya"), jv("2hJoJuqjnqM","Shibuya at sunset")] },
+  { slug:"shimokita", map:"tokyo", name:"Shimokitazawa", x:90, y:336, side:"b", blurb:"Vintage shops, tiny theaters and coffee.",
+    videos:[jv("un9FkeEOMxo","The nostalgic shopping streets"), jv("4kWAS-po4tA","Shimokitazawa at night")] },
+  { slug:"ueno", map:"tokyo", name:"Ueno", sub:"Ameyoko", x:395, y:130, side:"l", blurb:"The Ameyoko market under the train tracks.",
+    videos:[jv("Mgf5X99GZaM","Ameyoko at night"), jv("ZXaWWNcM3GE","Ameyoko shopping street")] },
+  { slug:"asakusa", map:"tokyo", name:"Asakusa", x:478, y:118, side:"b", blurb:"Senso-ji, Nakamise street and the Kaminarimon lantern.",
+    videos:[jv("0S0ToBtFgSE","Old streets to Senso-ji"), jv("Y-e9CG0m6js","Asakusa after dark"), jv("eHh7zSOTbdc","Nakamise-dori to Senso-ji")] },
+  { slug:"akihabara", map:"tokyo", name:"Akihabara", x:400, y:190, side:"r", blurb:"Electric Town: anime, arcades and maid cafés.",
+    videos:[jv("1e_-dNGLWjQ","Electric Town"), jv("I_jaDkLjgqg","Akihabara at night")] },
+  { slug:"ginza", map:"tokyo", name:"Ginza", x:360, y:290, side:"r", blurb:"Department stores and flagship boutiques.",
+    videos:[jv("xFPq9114nt0","Japan's most luxurious district"), jv("4C9ECIlTBkM","Ginza to Shimbashi")] },
+  { slug:"odaiba", map:"tokyo", name:"Odaiba", x:470, y:412, side:"r", blurb:"The Rainbow Bridge and a beach in Tokyo Bay.",
+    videos:[jv("IqmBkFkH1qY","Tokyo's futuristic island"), jv("w15q8ytN7Yo","Rainbow Bridge on a rainy night")] },
+];
+const JP_HUBS = { hub:{ lon:139.77, lat:35.68 }, tstn:{ x:395, y:255 } };
+JP_STOPS.forEach(d => {
+  if (d.map === "jp" && d.x == null) [d.x, d.y] = jpXY(d.lon, d.lat);
+  d.city = d.name + (d.sub ? " · " + d.sub : ""); d.country = d.map === "tokyo" ? "Tokyo" : "Japan"; d.tz = "Asia/Tokyo"; d.jp = true;
+  d.more = (d.map === "tokyo" ? "Tokyo " : "") + d.name + " 4K walk"; d.moreLabel = "More walks in " + d.name;
+  d.lines = JP_LINES.filter(l => l.route.includes(d.slug));
+  Object.defineProperty(d, "eyebrow", { get() {
+    const via = d.lines.filter(l => l.style !== "air" && l.style !== "dash").map(l => l.map === "tokyo" ? l.name.split(" · ")[0] : l.name.split(" · ")[0]).join(" · ");
+    return `${d.map === "tokyo" ? "Tokyo" : "Japan"}${via ? " · " + via : ""} · ${localTime(d.tz)}`;
+  } });
+});
+const JP_BY = Object.fromEntries(JP_STOPS.map(d => [d.slug, d]));
+let jpFocus = null;
+
+function jpPt(line, it) {
+  if (typeof it === "string") {
+    const d = JP_BY[it]; if (d) return [d.x, d.y];
+    const h = JP_HUBS[it]; return h.x != null ? [h.x, h.y] : jpXY(h.lon, h.lat);
+  }
+  if (it.raw) return it.raw;
+  return line.map === "jp" ? jpXY(it[0], it[1]) : it;
+}
+function jpStopsSvg(map) {
+  const badge = (n) => `<g class="hf-badge"><rect x="${String(n).length > 1 ? -10.5 : -8}" y="-7.5" width="${String(n).length > 1 ? 21 : 16}" height="15" rx="7.5"/><text y="3.6" text-anchor="middle">${n}</text></g>`;
+  return JP_STOPS.filter(d => d.map === map).map(d => {
+    const many = d.lines.filter(l => l.style !== "air" && l.style !== "dash").length > 1;
+    const col = d.lines[0] ? d.lines[0].color : "#111820";
+    const anchor = d.side === "l" ? "end" : d.side === "b" ? "middle" : "start";
+    const lx = d.side === "l" ? d.x - 13 : d.side === "b" ? d.x : d.x + 13, ly = d.side === "b" ? d.y + 23 : d.y + 4.5;
+    return `<g class="hf-stop kr-stop" data-jp="${d.slug}" tabindex="0" role="button" aria-label="${esc(d.city)}: ${d.videos.length} walks">
+      <circle class="kr-hit" cx="${d.x}" cy="${d.y}" r="14"/>
+      <circle class="kr-dot${many ? " kr-xfer" : ""}" cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="${many ? 8 : 6.5}" style="--c:${col}"/>
+      <text class="hf-lbl" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}">${esc(d.name)}</text>
+      ${d.sub ? `<text class="hf-boro" x="${lx.toFixed(1)}" y="${(ly + 12).toFixed(1)}" text-anchor="${anchor}">${esc(d.sub.toUpperCase())}</text>` : ""}
+      ${badge(d.videos.length)}</g>`;
+  }).join("");
+}
+function jpLinesSvg(map) {
+  return JP_LINES.filter(l => l.map === map).map(l => {
+    const pts = l.route.map(it => jpPt(l, it));
+    if (l.style === "air") {
+      const [a, b] = pts, mx = Math.max(a[0], b[0]) + 40, my = (a[1] + b[1]) / 2 + 20;
+      const d = `M${a[0].toFixed(1)},${a[1].toFixed(1)}Q${mx.toFixed(1)},${my.toFixed(1)} ${b[0].toFixed(1)},${(b[1] - 14).toFixed(1)}`;
+      const px = .25 * a[0] + .5 * mx + .25 * b[0], py = .25 * a[1] + .5 * my + .25 * (b[1] - 14);
+      return `<g class="kr-line" data-line="${l.id}"><path class="kr-air" d="${d}" stroke="${l.color}"/>
+        <text class="kr-plane" x="${px.toFixed(1)}" y="${(py + 6).toFixed(1)}" text-anchor="middle" transform="rotate(120 ${px.toFixed(1)} ${py.toFixed(1)})">✈</text></g>`;
+    }
+    const d = l.loop ? hfSmooth(pts) : krD(pts);
+    if (l.style === "ktx") return `<g class="kr-line" data-line="${l.id}"><path class="kr-ktx-g" d="${d}"/><path class="kr-ktx jp-shk" d="${d}" stroke="${l.color}"/><path class="kr-ktx-i" d="${d}"/></g>`;
+    if (l.style === "dash") return `<g class="kr-line" data-line="${l.id}"><path class="kr-bus" d="${d}" stroke="${l.color}"/></g>`;
+    return `<g class="kr-line" data-line="${l.id}"><path class="hf-line" d="${d}" stroke="${l.color}"/></g>`;
+  }).join("");
+}
+
+function jpBuild() {
+  const P = (arr) => arr.map(([lo, la]) => jpXY(lo, la));
+  const honshu = P([[130.9,34.0],[131.4,34.4],[132.2,35.0],[132.7,35.4],[133.3,35.55],[134.2,35.55],[135.0,35.7],[135.4,35.6],[135.9,35.75],[136.0,36.0],[136.4,36.4],[136.7,36.9],[137.05,37.45],[137.35,37.5],[136.9,37.1],[137.3,36.8],[137.6,36.95],[138.2,37.15],[138.8,37.8],[139.4,38.3],[139.8,39.0],[140.0,39.6],[139.8,40.0],[140.0,40.6],[140.3,41.2],[140.7,41.1],[141.2,41.4],[141.45,41.3],[141.4,40.6],[141.8,40.1],[142.05,39.5],[141.9,38.95],[141.5,38.3],[141.0,38.2],[140.95,37.6],[141.0,37.0],[140.75,36.6],[140.6,36.2],[140.85,35.75],[140.4,35.2],[139.85,34.95],[139.85,35.3],[139.7,35.5],[139.6,35.25],[139.15,35.15],[138.85,34.65],[138.75,35.05],[138.4,34.85],[138.2,34.6],[137.5,34.65],[137.0,34.6],[136.85,34.95],[136.6,34.4],[136.85,34.25],[136.2,33.95],[135.75,33.45],[135.35,33.7],[135.15,34.25],[135.4,34.65],[135.1,34.7],[134.6,34.75],[133.9,34.55],[133.2,34.35],[132.5,34.25],[132.1,33.95],[131.5,33.95]]);
+  const kyushu = P([[130.9,33.9],[131.2,33.6],[131.7,33.5],[131.95,33.0],[131.6,32.4],[131.4,31.6],[131.1,31.35],[130.7,31.0],[130.3,31.25],[130.2,31.8],[130.4,32.6],[130.0,32.75],[129.75,33.0],[129.85,33.4],[130.3,33.6],[130.6,33.9]]);
+  const shikoku = P([[132.4,33.95],[132.75,33.95],[133.5,34.05],[134.0,34.35],[134.6,34.2],[134.75,33.8],[134.2,33.4],[133.6,33.45],[133.0,32.75],[132.5,32.9],[132.4,33.4],[132.05,33.4]]);
+  const H = (arr) => arr.map(([lo, la]) => hkXY(lo, la));
+  const hokkaido = H([[140.0,41.45],[140.5,41.75],[141.2,41.8],[140.7,42.2],[140.5,42.55],[141.0,42.35],[141.6,42.6],[142.5,42.25],[143.3,41.95],[143.9,42.6],[144.6,42.95],[145.6,43.3],[145.3,43.6],[145.2,44.15],[144.3,44.0],[143.3,44.4],[142.6,45.0],[141.9,45.5],[141.65,45.1],[141.8,44.4],[141.4,43.7],[141.3,43.2],[140.6,43.3],[140.4,42.9],[139.85,42.6],[139.9,42.1],[140.15,41.75]]);
+  const sado = P([[138.2,37.85],[138.5,38.05],[138.55,38.3],[138.3,38.2]]);
+  const awaji = P([[134.75,34.2],[135.0,34.6],[134.9,34.65],[134.7,34.35]]);
+  const hkBox = { x:6, y:6, w:156, h:122 };
+  const box = { x:298, y:346, w:134, h:84 };
+  const oki = [[320,424],[330,414],[342,406],[360,394],[384,380],[404,368],[410,372],[392,388],[370,402],[350,414],[332,426]];
+  const mtn = (x, y, s = 1, snow) => sfPeak(x, y, s, snow);
+  const mtns = [[138.73,35.36,1.7,1],[137.6,36.3,.9,1],[137.9,35.95,.8,1],[140.5,39.2,.8],[140.4,38.1,.7],[133.1,35.1,.7],[131.1,32.9,.8],[133.3,33.7,.7],[136.4,36.15,.7,1]].map(([lo, la, sc, sn]) => mtn(...jpXY(lo, la), sc, sn)).join("") + mtn(...hkXY(142.85,43.66), .9, 1);
+  const [hx, hy] = jpXY(JP_HUBS.hub.lon, JP_HUBS.hub.lat);
+  const sea = (t, lon, lat, rot = 0) => { const [x, y] = jpXY(lon, lat); return `<text class="hf-water" transform="translate(${x.toFixed(0)},${y.toFixed(0)}) rotate(${rot})" text-anchor="middle">${t}</text>`; };
+  const [hdx, hdy] = hkXY(140.73, 41.77);
+  $("jpMap").innerHTML = `
+    <rect class="hf-sea" x="-50" y="-50" width="550" height="550"/><rect x="-50" y="-50" width="550" height="550" fill="url(#sfWaves)"/>
+    <g class="sf-landg" filter="url(#sfShadow)">
+      ${[honshu, kyushu, shikoku, sado, awaji].map(p => `<path class="hf-island" d="${hfSmooth(p)}"/>`).join("")}
+    </g>
+    <g class="jp-okibox jp-hkbox"><rect x="${hkBox.x}" y="${hkBox.y}" width="${hkBox.w}" height="${hkBox.h}" rx="8"/>
+      <path class="hf-island" d="${hfSmooth(hokkaido)}"/><text class="kr-note" x="${hkBox.x + 8}" y="${hkBox.y + 13}">HOKKAIDO</text>
+      <path class="kr-ktx" d="M${hdx},${hkBox.y + hkBox.h}L${hdx},${hdy}" stroke="#2E9E4A"/>
+      <circle class="sf-cdot" cx="${hdx}" cy="${hdy}" r="2.6"/><text class="sf-ctext" x="${hdx + 6}" y="${hdy + 3}">Hakodate</text></g>
+    <g class="jp-okibox"><rect x="${box.x}" y="${box.y}" width="${box.w}" height="${box.h}" rx="8"/>
+      <path class="hf-island" d="${hfSmooth(oki)}"/><text class="kr-note" x="${box.x + 8}" y="${box.y + 14}">OKINAWA ↙ 1,550 KM</text></g>
+    ${mtns}
+    ${sea("SEA OF JAPAN", 135.6, 38.1, -35)}${sea("PACIFIC OCEAN", 141.7, 33.9, -68)}${sea("SETO INLAND SEA", 133.0, 34.18, -6)}
+    <text class="kr-note" x="${(jpXY(140.73, 40.83)[0] - 8).toFixed(0)}" y="${(jpXY(140.73, 40.83)[1] - 8).toFixed(0)}" text-anchor="end">TO HOKKAIDO ↖</text>
+    <g class="hf-linegrp">${jpLinesSvg("jp")}</g>
+    <g class="kr-hubg" id="jpHub" tabindex="0" role="button" aria-label="Tokyo: see the city map">
+      <rect class="kr-hubbox" x="${hx - 20}" y="${hy - 17}" width="40" height="34" rx="8"/>
+      <circle class="kr-hubdot" cx="${hx}" cy="${hy}" r="10"/><text class="kr-hubk" x="${hx}" y="${hy + 3.5}" text-anchor="middle">東京</text>
+      <text class="hf-lbl" x="${hx + 25}" y="${hy - 6}">Tokyo</text><text class="hf-boro" x="${hx + 25}" y="${hy + 7}">CITY MAP →</text></g>
+    <g class="hf-stops">${jpStopsSvg("jp")}</g>
+    <g class="hf-compass" transform="translate(252,40)"><circle r="17"/><path class="hf-cn" d="M0,-15l4,15h-8z"/><path class="hf-cs" d="M0,15l4,-15h-8z"/><text y="-20" text-anchor="middle">N</text></g>`;
+  sfDecorate($("jpMap"), { xy: jpXY, wm: "日本", wmAt: [212, 412],
+    grat: { lon: [130, 132, 134, 136, 138, 140, 142], lat: [32, 34, 36, 38, 40] }, box: [0, 0, 440, 440],
+    hills: [[137.8,36.1,40],[140.6,39.0,38],[139.9,37.4,30],[133.5,35.0,30],[131.2,32.7,26],[133.3,33.7,26],[136.2,35.4,26]],
+    cities: [["Nagoya",136.9,35.18,"b"],["Sendai",140.88,38.27,"l"],["Niigata",139.04,37.92,"l"],["Okayama",133.92,34.67,"t"],["Kagoshima",130.56,31.6,"r"],["Kochi",133.53,33.56,"r"],["Matsuyama",132.77,33.84,"l"],["Morioka",141.15,39.7,"l"],["Nagano",138.19,36.64,"t"]],
+    ferry: { from: jpXY(130.42, 33.59), to: [-4, 292], label: "⛴ to Busan", at: [4, 286] } });
+  // ---- Tokyo inset ----
+  const sumida = krD([[505,-10],[498,60],[492,120],[478,190],[462,260],[446,330],[432,392]]);
+  const bay = hfSmooth([[400,380],[470,360],[560,330],[640,310],[640,500],[300,500],[330,440],[372,410]]);
+  const odaibaIsl = hfSmooth([[440,398],[478,388],[505,400],[498,428],[455,432]]);
+  const green = (pts) => `<path class="hf-park" d="${hfSmooth(pts)}"/>`;
+  const palace = `<path class="hf-park" d="${hfSmooth([[305,222],[350,218],[358,252],[318,262],[300,245]])}"/><path class="jp-moat" d="${hfSmooth([[300,216],[356,212],[365,256],[316,268],[294,248]])}"/>
+    <text class="hf-lmname hf-onland" x="330" y="244" text-anchor="middle">Imperial Palace</text>`;
+  const skytree = `<g class="kr-lmk" transform="translate(528,135)"><path class="hf-tower-b" d="M-5,0L-1.4,-50L0,-58L1.4,-50L5,0Z"/><ellipse class="hf-tower-b" cx="0" cy="-36" rx="4.2" ry="2"/>
+    <text class="hf-lmname hf-onland" y="13" text-anchor="middle">Skytree</text></g>`;
+  const ttower = `<g class="kr-lmk" transform="translate(318,360)"><path class="jp-ttower" d="M-9,0L-1.5,-36L0,-44L1.5,-36L9,0M-6,-12h12M-3.6,-24h7.2"/>
+    <text class="hf-lmname hf-onland" y="12" text-anchor="middle">Tokyo Tower</text></g>`;
+  const fuji = `<g class="kr-lmk" transform="translate(48,446)"><path class="jp-fuji" d="M-40,0L-10,-30h20L40,0Z"/><path class="kr-snow" d="M-15,-25L-10,-30h20L15,-25L8,-21L3,-25L-3,-21L-8,-25Z"/>
+    <text class="hf-lmname" x="0" y="12" text-anchor="middle">Mt Fuji · 100 km ↙</text></g>`;
+  const rainbow = `<path class="hf-bridge" d="M392,372Q420,360 448,398"/><path class="hf-bridge-i" d="M392,372Q420,360 448,398"/>`;
+  const [sx, sy] = [JP_HUBS.tstn.x, JP_HUBS.tstn.y];
+  $("jpTokyo").innerHTML = `
+    <rect class="hf-island" x="-20" y="-20" width="660" height="520"/>
+    <path class="hf-street" d="${(() => { let g = ""; for (let x = -40; x < 660; x += 20) g += `M${x},0L${x - 40},470`; for (let y = 0; y < 480; y += 20) g += `M0,${y}L620,${y + 25}`; return g; })()}"/>
+    ${green([[150,250],[185,245],[190,285],[152,290]])}${green([[375,108],[420,104],[425,140],[380,148]])}${green([[190,225],[215,222],[218,240],[192,242]])}
+    <path class="kr-river" d="${bay}"/><path class="jp-sumida" d="${sumida}"/><path class="hf-island" d="${odaibaIsl}"/>${rainbow}
+    ${palace}${skytree}${ttower}${fuji}
+    <text class="hf-water" x="560" y="400" text-anchor="middle">TOKYO BAY</text>
+    <text class="hf-water" transform="translate(484,250) rotate(-74)" text-anchor="middle">SUMIDA RIVER</text>
+    <g class="hf-linegrp">${jpLinesSvg("tokyo")}</g>
+    <g class="kr-hubg"><circle class="kr-hubdot" cx="${sx}" cy="${sy}" r="9"/>
+      <text class="hf-lbl" x="${sx + 13}" y="${sy + 3}">Tokyo Stn</text><text class="hf-boro" x="${sx + 13}" y="${sy + 15}">SHINKANSEN</text></g>
+    <g class="hf-stops">${jpStopsSvg("tokyo")}</g>`;
+  sfCity($("jpTokyo"), [["TOSHIMA", 120, 50, 170, 110, "#e4ddf3"], ["BUNKYO", 290, 90, 80, 90, "#f6d9e3"], ["TAITO", 370, 70, 110, 110, "#fde3cf"], ["SUMIDA", 505, 40, 115, 220, "#d7ecf2"],
+    ["SHINJUKU", 90, 165, 140, 95, "#fbefc7"], ["CHIYODA", 270, 185, 115, 90, "#d8f0de"], ["SHIBUYA", 120, 262, 130, 100, "#f8dcdc"], ["CHUO", 380, 260, 70, 90, "#f4f0c8"], ["MINATO", 250, 300, 130, 110, "#d9e6fb"], ["SETAGAYA", 0, 290, 120, 180, "#e9f3d6"]]);
+
+  const short = { tokaido:"Osaka · Fukuoka", tohoku:"Hokkaido", hokuriku:"Kanazawa", kintetsu:"Nara", air:"Okinawa" };
+  const chip = (l) => `<button type="button" class="hf-lchip kr-lchip" data-l="${l.id}" aria-pressed="false" title="${esc(l.name)}">
+    <span class="hf-bullets"><i style="background:${l.color};color:${l.ink}${l.bullet.length > 1 ? ";width:auto;padding:0 5px;border-radius:9px" : ""}">${l.bullet}</i></span>${short[l.id] ? `<span class="kr-lname">${short[l.id]}</span>` : ""}</button>`;
+  $("jpLines").innerHTML = `<span class="kr-lgroup">Country</span>` + JP_LINES.filter(l => l.map === "jp" && l.style !== "dash").map(chip).join("") +
+    `<span class="kr-lgroup">Tokyo</span>` + JP_LINES.filter(l => l.map === "tokyo").map(chip).join("");
+  const total = JP_STOPS.reduce((a, d) => a + d.videos.length, 0);
+  $("jpCount").textContent = `${JP_STOPS.length} stops · ${total} walks · Tokyo and beyond`;
+  krPlaceBadges();
+}
+
+function jpPaint() {
+  document.querySelectorAll("[data-jp]").forEach(g => {
+    const d = JP_BY[g.dataset.jp];
+    g.classList.toggle("on", current === d);
+    g.classList.toggle("dim", !!jpFocus && !d.lines.some(l => l.id === jpFocus));
+  });
+  document.querySelectorAll("#jpPanel .kr-line").forEach(p => p.classList.toggle("dim", !!jpFocus && p.dataset.line !== jpFocus));
+  $("jpLines").querySelectorAll(".hf-lchip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.l === jpFocus)));
+  const on = !!(current && current.jp);
+  $("jpPh").hidden = on;
+  if (!on && $("card").parentNode === $("jpSlot")) cardHome($("mapSection"));
+}
+const jpStatus = (d) => { $("jpStatus").innerHTML = d ? `<b>${esc(d.city)}</b> · ${d.videos.length} walks` : "Tap a city on the Shinkansen map, or a neighborhood on the Tokyo metro"; };
+function jpGo(d, fromHash) {
+  if (!d) return;
+  if (d !== current) {
+    previous = current; current = d; activeVideo = 0; tab = "walks"; arcFrom = arcTo = null; inertia = null;
+    target.lon = 137.5; target.lat = 36.5; target.zoom = Math.max(target.zoom, 1.25);
+    cardHome($("jpSlot")); renderCard(); renderRegions(); drawMap(); hfPaint(); hfStatus(null); krPaint(); krStatus(null);
+  }
+  jpPaint(); jpStatus(d);
+  if (innerWidth <= 960 && !fromHash) $("card").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
+  if (!fromHash) { try { history.replaceState(null, "", "#jp-" + d.slug); } catch (e) {} }
+}
+function jpOpen(slug, fromHash) {
+  if (slug && JP_BY[slug]) { jpGo(JP_BY[slug], fromHash); return; }
+  const p = $("jpPanel"); p.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
+  p.classList.remove("flash"); void p.offsetWidth; p.classList.add("flash");
+}
+["jpMap", "jpTokyo"].forEach(id => {
+  const svg = $(id);
+  svg.addEventListener("click", (e) => {
+    const g = e.target.closest("[data-jp]"); if (g) { jpGo(JP_BY[g.dataset.jp]); return; }
+    if (e.target.closest("#jpHub")) { const b = $("jpTokyoBox"); b.classList.remove("flash"); void b.offsetWidth; b.classList.add("flash"); }
+  });
+  svg.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const g = e.target.closest("[data-jp]"); if (g) { e.preventDefault(); jpGo(JP_BY[g.dataset.jp]); }
+  });
+  svg.addEventListener("pointerover", (e) => { const g = e.target.closest("[data-jp]"); if (g) jpStatus(JP_BY[g.dataset.jp]); });
+  svg.addEventListener("pointerleave", () => jpStatus(current && current.jp ? current : null));
+});
+$("jpLines").addEventListener("click", (e) => {
+  const b = e.target.closest(".hf-lchip"); if (!b) return;
+  jpFocus = jpFocus === b.dataset.l ? null : b.dataset.l; jpPaint();
+});
+$("jpRandom").addEventListener("click", () => {
+  const pool = JP_STOPS.filter(d => d !== current && (!jpFocus || d.lines.some(l => l.id === jpFocus)));
+  jpGo(pool[(Math.random() * pool.length) | 0]);
+});
+$("cClose").addEventListener("click", () => { jpPaint(); jpStatus(null); });
+$("card").addEventListener("click", (e) => { if (e.target.closest("[data-jpopen]")) jpOpen(); });
+jpBuild(); jpStatus(null); jpPaint();
+
 /* ---------- Boot ---------- */
 function clocks() {
   if (current) $("cEyebrow").textContent = eyebrow(current);
@@ -2138,6 +2520,7 @@ function clocks() {
 function fromHash() { const h = location.hash.slice(1);
   if (h === "nyc" || h.startsWith("nyc-")) { hfOpen(h.slice(4), true); return; }
   if (h === "kr" || h.startsWith("kr-")) { krOpen(h.slice(3), true); return; }
+  if (h === "jp" || h.startsWith("jp-")) { jpOpen(h.slice(3), true); return; }
   const d = h === "moon" ? MOON : h === "mars" ? MARS : DEST.find(x => x.slug === h); if (d) go(d, true); }
 window.addEventListener("hashchange", fromHash);
 window.addEventListener("resize", size);
